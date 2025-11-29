@@ -1,0 +1,150 @@
+---
+// Layout base para todas las páginas
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Turismo - Explora el mundo', description = 'Descubre los mejores destinos turísticos del mundo' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Estilos globales -->
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #0F172A;
+        background-color: #F0F9FF;
+        line-height: 1.6;
+      }
+
+      /* Animaciones globales */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.7s ease-in-out forwards;
+      }
+
+      .animate-slide-up {
+        animation: slideUp 0.7s ease-out forwards;
+      }
+
+      .animate-slide-in-left {
+        animation: slideInLeft 0.7s ease-out forwards;
+      }
+
+      .animate-scale-in {
+        animation: scaleIn 0.7s ease-out forwards;
+      }
+
+      /* Delay animations */
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+
+      /* Smooth transitions */
+      button, a {
+        transition: all 0.3s ease;
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #F0F9FF;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #0EA5E9;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #0369A1;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

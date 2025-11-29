@@ -1,0 +1,76 @@
+---
+// Componente Hero - Sección principal con imagen de fondo
+---
+
+<section class="relative w-full h-screen min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-turismo-bg via-turismo-bg to-turismo-primary/10">
+  
+  <!-- Imagen de fondo - Cataratas del Iguazú -->
+  <div 
+    class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-80"
+    style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&q=80'); background-attachment: fixed;"
+  ></div>
+
+  <!-- Overlay oscuro para mejor legibilidad -->
+  <div class="absolute inset-0 bg-gradient-to-b from-turismo-bg/30 via-turismo-bg/20 to-turismo-bg/30"></div>
+
+  <!-- Contenido del Hero -->
+  <div class="relative z-10 w-full px-6 md:px-12 lg:px-20 py-28 text-center max-w-6xl mx-auto">
+    
+    <!-- Título principal con animación -->
+    <h1 
+      class="text-4xl md:text-5xl lg:text-7xl font-bold text-turismo-text mb-6 leading-tight animate-fade-in"
+      style="animation-duration: 0.7s;"
+    >
+      Descubre los Mejores
+      <span class="block text-turismo-primary">Destinos del Mundo</span>
+    </h1>
+
+    <!-- Subtítulo con animación -->
+    <p 
+      class="text-lg md:text-xl lg:text-2xl text-turismo-text-secondary mb-8 max-w-3xl mx-auto animate-slide-up"
+      style="animation-duration: 0.7s; animation-delay: 0.2s;"
+    >
+      Vive experiencias inolvidables en los lugares más hermosos del planeta. Planifica tu próxima aventura con nosotros.
+    </p>
+
+    <!-- Botón principal con animación -->
+    <div 
+      class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up"
+      style="animation-duration: 0.7s; animation-delay: 0.4s;"
+    >
+      <button 
+        class="px-8 md:px-10 py-4 md:py-5 bg-turismo-primary text-white font-bold text-lg rounded-lg hover:bg-turismo-highlight hover:shadow-2xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
+      >
+        Explorar Destinos
+      </button>
+      
+      <button 
+        class="px-8 md:px-10 py-4 md:py-5 border-2 border-turismo-secondary text-turismo-secondary font-bold text-lg rounded-lg hover:bg-turismo-secondary hover:text-white transform hover:scale-105 transition-all duration-300 cursor-pointer"
+      >
+        Más Información
+      </button>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-turismo-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
+</style>

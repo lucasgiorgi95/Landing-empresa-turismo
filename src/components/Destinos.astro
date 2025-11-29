@@ -1,0 +1,148 @@
+---
+// Componente Destinos Populares - Grid de tarjetas con destinos
+
+interface Destino {
+  id: number;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  imagen: string;
+  rating: number;
+}
+
+const destinos: Destino[] = [
+  {
+    id: 1,
+    nombre: "Cataratas del Iguazú",
+    descripcion: "Una de las maravillas naturales del mundo. Espectaculares cascadas de agua en la frontera con Brasil y Paraguay.",
+    precio: 450,
+    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop&q=80",
+    rating: 4.9,
+  },
+  {
+    id: 2,
+    nombre: "Ruinas de San Ignacio",
+    descripcion: "Vestigios de la misión jesuita del siglo XVII. Arquitectura colonial inmersas en la selva misionera.",
+    precio: 280,
+    imagen: "https://images.unsplash.com/photo-1587595431973-160550652147?w=500&h=400&fit=crop&q=80",
+    rating: 4.8,
+  },
+  {
+    id: 3,
+    nombre: "Parque Nacional Iguazú",
+    descripcion: "Selva subtropical con senderos, miradores y la oportunidad de avistar fauna nativa de Misiones.",
+    precio: 320,
+    imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=400&fit=crop&q=80",
+    rating: 4.7,
+  },
+  {
+    id: 4,
+    nombre: "Salto Encantado",
+    descripcion: "Cascada mágica rodeada de vegetación exuberante. Ideal para trekking y contacto con la naturaleza.",
+    precio: 350,
+    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop&q=80",
+    rating: 4.9,
+  },
+  {
+    id: 5,
+    nombre: "Oberá - Capital de Misiones",
+    descripcion: "Corazón cultural de la provincia. Mercados artesanales, gastronomía local y tradiciones misioneras.",
+    precio: 220,
+    imagen: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=400&fit=crop&q=80",
+    rating: 4.8,
+  },
+  {
+    id: 6,
+    nombre: "Reserva de Biosfera Yabotí",
+    descripcion: "Selva virgen protegida con biodiversidad única. Avistaje de aves, monos y flora nativa de Misiones.",
+    precio: 380,
+    imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&h=400&fit=crop&q=80",
+    rating: 4.9,
+  },
+];
+---
+
+<section class="w-full bg-white py-20 md:py-28 lg:py-32 px-6 md:px-12 lg:px-20">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Encabezado de la sección -->
+    <div class="text-center mb-16 md:mb-20 animate-fade-in">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-turismo-text mb-4">
+        Destinos Populares
+      </h2>
+      <p class="text-lg text-turismo-text-secondary max-w-2xl mx-auto">
+        Explora nuestros destinos más solicitados y encuentra tu próximo viaje perfecto
+      </p>
+    </div>
+
+    <!-- Grid de tarjetas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      {destinos.map((destino, index) => (
+        <div 
+          class="group bg-turismo-bg rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 cursor-pointer animate-slide-up"
+          style={`animation-delay: ${index * 0.1}s;`}
+        >
+          <!-- Imagen del destino -->
+          <div class="relative h-48 md:h-56 overflow-hidden bg-gray-200">
+            <img 
+              src={destino.imagen}
+              alt={destino.nombre}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <!-- Badge de rating -->
+            <div class="absolute top-4 right-4 bg-turismo-primary text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+              <span>★</span>
+              <span>{destino.rating}</span>
+            </div>
+          </div>
+
+          <!-- Contenido de la tarjeta -->
+          <div class="p-6 md:p-8">
+            <!-- Nombre del destino -->
+            <h3 class="text-xl md:text-2xl font-bold text-turismo-text mb-3">
+              {destino.nombre}
+            </h3>
+
+            <!-- Descripción -->
+            <p class="text-turismo-text-secondary text-sm md:text-base mb-6 line-clamp-2">
+              {destino.descripcion}
+            </p>
+
+            <!-- Precio y botón -->
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-turismo-text-secondary text-sm">Desde</p>
+                <p class="text-2xl md:text-3xl font-bold text-turismo-primary">
+                  ${destino.precio}
+                </p>
+              </div>
+              <button 
+                class="px-6 py-3 bg-turismo-primary text-white font-bold rounded-lg hover:bg-turismo-secondary transition-colors duration-300"
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Botón para ver más destinos -->
+    <div class="text-center mt-16 md:mt-20 animate-fade-in" style="animation-delay: 0.6s;">
+      <button 
+        class="px-10 py-4 bg-turismo-secondary text-white font-bold text-lg rounded-lg hover:bg-turismo-primary transform hover:scale-105 transition-all duration-300"
+      >
+        Ver Todos los Destinos
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+// Componente Testimonios - Opiniones de clientes
+
+interface Testimonio {
+  id: number;
+  nombre: string;
+  pais: string;
+  texto: string;
+  foto: string;
+  rating: number;
+}
+
+const testimonios: Testimonio[] = [
+  {
+    id: 1,
+    nombre: "María García",
+    pais: "Argentina",
+    texto: "Increíble experiencia. El viaje a Maldivas fue exactamente como lo imaginaba. El equipo fue muy atento y profesional en todo momento.",
+    foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
+    rating: 5,
+  },
+  {
+    id: 2,
+    nombre: "Juan Rodríguez",
+    pais: "España",
+    texto: "Excelente servicio y precios muy competitivos. Recomiendo ampliamente a Turismo. Volveré a viajar con ustedes sin dudarlo.",
+    foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
+    rating: 5,
+  },
+  {
+    id: 3,
+    nombre: "Sofia Müller",
+    pais: "Alemania",
+    texto: "Desde el primer contacto hasta el regreso, todo fue perfecto. Los destinos seleccionados fueron espectaculares y la organización impecable.",
+    foto: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
+    rating: 5,
+  },
+];
+---
+
+<section class="w-full bg-white py-20 md:py-28 lg:py-32 px-6 md:px-12 lg:px-20">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Encabezado de la sección -->
+    <div class="text-center mb-16 md:mb-20 animate-fade-in">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-turismo-text mb-4">
+        Lo Que Dicen Nuestros Clientes
+      </h2>
+      <p class="text-lg text-turismo-text-secondary max-w-2xl mx-auto">
+        Testimonios reales de viajeros que confiaron en nosotros
+      </p>
+    </div>
+
+    <!-- Grid de testimonios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      {testimonios.map((testimonio, index) => (
+        <div 
+          class="bg-turismo-bg rounded-xl p-8 md:p-10 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 animate-slide-up border-l-4 border-turismo-primary"
+          style={`animation-delay: ${index * 0.15}s;`}
+        >
+          <!-- Rating -->
+          <div class="flex gap-1 mb-4">
+            {[...Array(testimonio.rating)].map(() => (
+              <svg class="w-5 h-5 text-turismo-primary fill-current" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Texto del testimonio -->
+          <p class="text-turismo-text-secondary text-base mb-6 leading-relaxed italic">
+            "{testimonio.texto}"
+          </p>
+
+          <!-- Información del cliente -->
+          <div class="flex items-center gap-4 pt-6 border-t border-turismo-primary/20">
+            <!-- Foto -->
+            <img 
+              src={testimonio.foto}
+              alt={testimonio.nombre}
+              class="w-14 h-14 rounded-full object-cover border-2 border-turismo-primary"
+            />
+            
+            <!-- Nombre y país -->
+            <div>
+              <p class="font-bold text-turismo-text">
+                {testimonio.nombre}
+              </p>
+              <p class="text-sm text-turismo-text-secondary">
+                {testimonio.pais}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Indicador de más testimonios -->
+    <div class="text-center mt-16 md:mt-20 animate-fade-in" style="animation-delay: 0.5s;">
+      <p class="text-turismo-text-secondary mb-6">
+        Más de 5,000 clientes satisfechos en todo el mundo
+      </p>
+      <button 
+        class="px-8 py-3 border-2 border-turismo-primary text-turismo-primary font-bold rounded-lg hover:bg-turismo-primary hover:text-white transition-all duration-300"
+      >
+        Ver Más Testimonios
+      </button>
+    </div>
+  </div>
+</section>
